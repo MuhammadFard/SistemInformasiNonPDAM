@@ -14,6 +14,18 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        // Customer
+        DB::table('users')->insert([
+            'nama' => 'Bobi Kertanegara',
+            'email' => 'bobikertanegara@gmail.com',
+            'password' => Hash::make('12345'),
+            'role' => 'customer',
+            'tanggal_terdaftar' => now(),
+            'account_type' => 'simple',
+            'is_verified' => true,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
         DB::table('users')->insert([
             'nama' => 'Super Admin',
             'email' => 'superadmin@gmail.com',
@@ -21,19 +33,6 @@ class UserSeeder extends Seeder
             'role' => 'superadmin',
             'tanggal_terdaftar' => now(),
             'account_type' => 'full',
-            'is_verified' => true,
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-
-        // Customer
-        DB::table('users')->insert([
-            'nama' => 'Admin',
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make('12345'),
-            'role' => 'customer',
-            'tanggal_terdaftar' => now(),
-            'account_type' => 'simple',
             'is_verified' => true,
             'created_at' => now(),
             'updated_at' => now()
