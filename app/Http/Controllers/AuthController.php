@@ -69,6 +69,7 @@ class AuthController extends Controller
             'alamat' => 'required|string',
             'nomor_telepon' => 'required|string',
             'kwh_category_id' => 'required|exists:kwh_categories,kwh_category_id',
+            
         ]);
 
         DB::transaction(function () use ($request) {
@@ -77,6 +78,7 @@ class AuthController extends Controller
                 'nama' => $request->nama,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
+                'tanggal_terdaftar' => now(),
                 'role' => 'customer',
                 'account_type' => 'simple',
                 'is_verified' => false,
@@ -85,6 +87,8 @@ class AuthController extends Controller
             Customer::create([
                 'user_id' => $user->user_id,
                 'alamat' => $request->alamat,
+                'rt' => $request->rt ?? '-', 
+                'rw' => $request->rw ?? '-',
                 'nomor_telepon' => $request->nomor_telepon,
                 'kwh_category_id' => $request->kwh_category_id,
                 'status' => 'pending',
