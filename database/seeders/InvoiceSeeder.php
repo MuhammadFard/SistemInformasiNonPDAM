@@ -15,7 +15,7 @@ class InvoiceSeeder extends Seeder
     {
         DB::table('invoices')->insert([
             'customer_id' => 1,
-            'nomor_invoice' => '',
+            'nomor_invoice' => '07C10000',
             'total_tagihan' => 50000,
             'tanggal_bayar' => now(),
             'tanggal_jatuh_tempo' => now()->addDays(30),
